@@ -8,5 +8,14 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'home#index'
+  scope module: "web" do
+    post 'auth/:provider', to: 'auth#request', as: :auth_request
+    delete 'auth/logout', to: 'auth#destroy'
+    get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
+
+    root 'home#index'
+  end
+
+
+
 end
