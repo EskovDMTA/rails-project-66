@@ -147,6 +147,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+    pg (1.5.4)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -203,6 +204,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sentry-rails (5.16.1)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.16.1)
+    sentry-ruby (5.16.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -250,9 +256,12 @@ DEPENDENCIES
   debug
   jbuilder
   jsbundling-rails
+  pg
   puma (>= 5.0)
   rails (~> 7.1.2)
   selenium-webdriver
+  sentry-rails
+  sentry-ruby
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
