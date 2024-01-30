@@ -1,0 +1,56 @@
+= link_to "Перейти к репозиторию", repository_path(params[:repository_id]), class: "btn btn-primary mb-4"
+table.table
+  tbody
+    tr
+      td
+        | Дата создания
+      td
+        = @check.created_at
+    tr
+      td
+        | Статус
+      td
+        = @check.status.to_s
+    tr
+      td
+        | Проверка пройдена
+      td
+        = @check.status
+    tr
+      td
+        | Количество замечаний
+      td
+        | 137
+    tr
+      td
+        | ID коммита
+      td
+        = link_to @check.commit_id, commit_link(@repository.full_name, @check.commit_id), target: "_blank"
+.mb-5
+table.table.table-hover.mb-5
+  thead
+    tr
+      th
+        | Сообщение
+      th
+        | Идентификатор правила
+      th
+        | Строка и символ
+  tbody
+    - @lint_errors.each_with_index do |element|
+      tr
+        td[colspan="3"]
+          = link_to formatted_file_name(element['file']), repository_link(@repository.full_name, @check.commit_id,
+                  formatted_file_name(element['file'])), target: "_blank"
+      - element['errors'].each do |line|
+        tr
+          td.col-md-8
+            = line['description']
+          td
+            = line['code']
+          td
+            = line['line']
+
+
+
+

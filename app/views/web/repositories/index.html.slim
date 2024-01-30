@@ -1,0 +1,21 @@
+= link_to "Добавить", new_repository_path, class: 'btn btn-primary'
+- if @repositories.present?
+  .row.mt-2
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th
+            = "Название"
+          th
+            = "Язык"
+          th
+            = "Статус последней проверки"
+      tbody
+        - @repositories.each do |repo|
+          tr
+            td
+              = link_to repo.name, repository_path(repo.id)
+            td
+              = repo.language
+            td
+              = time_ago_in_words(repo.created_at).to_s

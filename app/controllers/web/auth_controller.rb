@@ -5,6 +5,8 @@ module Web
     def callback
       auth = request.env['omniauth.auth']
       user = User.find_by(provider: auth['provider'], uid: auth['uid']) || create_with_omniauth(auth)
+      user.token = auth['credentials']['token']
+      user.save
       session[:user_id] = user.id
       redirect_to root_path, notice: t('authentication.login')
     end
@@ -21,7 +23,7 @@ module Web
         user.provider = auth['provider']
         user.uid = auth['uid']
         user.name = auth['info']['name']
-        user.nicname = auth['info']['name']
+        user.nickname = auth['info']['name']
         user.email = auth['info']['email']
         user.image_url = auth['info']['image']
         user.token = auth['credentials']['token']

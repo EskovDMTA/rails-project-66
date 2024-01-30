@@ -1,0 +1,5 @@
+
+= simple_form_for @repository, html: { 'data-turbo': 'false', class: "mt-2"} do |f|
+  = label :repo_id, 'GitHub *', class: 'mb-2'
+  = select_tag :repo_id, options_for_select(@user_repositories), required: true, disabled: @user_repositories.empty?, class: "form-select mb-2"
+  = f.button :submit, "Создать репозиторий", class: 'btn-success mt-2', disabled: @user_repositories.empty?
