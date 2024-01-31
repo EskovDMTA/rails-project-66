@@ -4,4 +4,4 @@
 [![repository-quality-analyzer](https://github.com/EskovDMTA/rails-project-66/actions/workflows/custom-build.yml/badge.svg)](https://github.com/EskovDMTA/rails-project-66/actions/workflows/custom-build.yml)
 
 Deploy: https://repository-quality-analyzer.onrender.com
-1
+2
