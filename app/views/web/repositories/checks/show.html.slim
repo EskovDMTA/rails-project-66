@@ -36,21 +36,8 @@ table.table.table-hover.mb-5
         | Идентификатор правила
       th
         | Строка и символ
-  tbody
-    - @lint_errors.each_with_index do |element|
-      tr
-        td[colspan="3"]
-          = link_to formatted_file_name(element['file']), repository_link(@repository.full_name, @check.commit_id,
-                  formatted_file_name(element['file'])), target: "_blank"
-      - element['errors'].each do |line|
-        tr
-          td.col-md-8
-            = line['description']
-          td
-            = line['code']
-          td
-            = line['line']
 
-
-
-
+  - if @repository.language.downcase == 'javascript'
+    = render partial: "web/repositories/checks/partial/js_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
+  - else
+    = render partial: "web/repositories/checks/partial/ruby_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}

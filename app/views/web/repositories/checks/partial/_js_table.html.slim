@@ -1,0 +1,14 @@
+tbody
+  - lint_errors.each do |element|
+    tr
+      td[colspan="3"]
+        = link_to formatted_file_name(element['filePath']), repository_link(repository.full_name, check.commit_id,
+                formatted_file_name(element['filePath'])), target: "_blank"
+    - element['messages'].each do |line|
+      tr
+        td.col-md-8
+          = line['message']
+        td
+          = line['rule_id']
+        td
+          = line['line']

@@ -24,8 +24,8 @@ module Linter
     end
 
     def create_config
-      repository_config = "#{Rails.root.join(@repo_path)}/.rubocop.yml"
       default_config = "#{Rails.root}/.rubocop.yml"
+      repository_config = "#{Rails.root.join(@repo_path)}/.rubocop.yml"
       FileUtils.cp(default_config, repository_config.to_s)
       "-c #{repository_config}"
     end

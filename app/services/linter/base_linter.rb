@@ -24,6 +24,7 @@ module Linter
     end
 
     private
+
     def build_parsing_result(stdout, exit_status)
       { parsed_result: parsing_result(stdout), exit_status: exit_status.exitstatus }
     end
