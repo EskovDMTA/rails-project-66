@@ -4,6 +4,7 @@ module Api
       puts "POLUCHENNO"
       puts "POLUCHENNO"
       puts "POLUCHENNO"
+      puts "POLUCHENNO"
     end
   end
 
