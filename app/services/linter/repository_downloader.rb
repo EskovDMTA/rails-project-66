@@ -4,7 +4,7 @@ module Linter
     def self.download(repository_url)
       temp_repo_path = generate_temp_repository_path
       git_clone_command = "git clone #{repository_url} #{temp_repo_path}"
-      Open3.capture2e(git_clone_command)
+      stdout, exit_status = Open3.capture2e(git_clone_command)
       temp_repo_path
     end
 
