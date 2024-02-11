@@ -118,6 +118,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    faraday-retry (2.2.0)
+      faraday (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -349,6 +351,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   enumerize
+  faraday-retry
   jbuilder
   jsbundling-rails
   octokit (~> 5.0)
