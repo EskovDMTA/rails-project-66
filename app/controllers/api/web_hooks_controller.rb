@@ -3,6 +3,7 @@ module Api
     def github
       puts "POLUCHENNO"
       puts "POLUCHENNO"
+      puts "POLUCHENNO"
     end
   end
 
