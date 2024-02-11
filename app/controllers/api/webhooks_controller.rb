@@ -1,5 +1,5 @@
 module Api
-  class WebHooksController < Api::ApplicationController
+  class WebhooksController < Api::ApplicationController
     def github
       puts "POLUCHENNO"
       puts "POLUCHENNO"
