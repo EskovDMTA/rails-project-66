@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_195354) do
     t.string "full_name"
     t.string "language"
     t.string "git_url"
+    t.string "git_id"
     t.string "ssh_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

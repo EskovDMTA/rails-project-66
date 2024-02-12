@@ -15,8 +15,10 @@ module Api
       params.require('repository').permit('id')
     end
 
-    def run_lint(repository_id)
-      repository = Repository.find(repository_id)
+    def run_lint(git_id)
+      repository = Repository.find_by(git_id:)
+      puts repository
+      puts git_id
       if repository
         client = Linter::LinterFactory.create_linter(@repository.language)
         repo_path = Linter::RepositoryDownloader.download(@repository.git_url)
