@@ -25,7 +25,9 @@ module Api
                                          status: error_lint_status, commit_id: commit_id)
           redirect_to root_path
         end
+      end
     end
+
   end
 
 end
