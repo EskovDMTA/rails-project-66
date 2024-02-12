@@ -27,6 +27,7 @@ module Api
         unless repository.checks.create(repo_path:, check_result: check_lint_result.to_json,
                                          status: error_lint_status, commit_id: commit_id)
           redirect_to root_path
+
         end
       end
     end
