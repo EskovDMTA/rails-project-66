@@ -18,7 +18,6 @@ module RepositoryQualityAnalyzer
     config.autoload_lib(ignore: %w[assets tasks])
 
     routes.default_url_options = { host: ENV['BASE_URL'] }
-    config.web_console.permissions = '140.82.115.246'
 
     # Configuration for the application, engines, and railties goes here.
     #
