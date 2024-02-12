@@ -4,7 +4,7 @@ module Api
 
     def github
       if request.headers["x-github-event"] == "push"
-        run_lint(repository_params)
+        run_lint(repository_params[:id])
       else
         nil
       end
