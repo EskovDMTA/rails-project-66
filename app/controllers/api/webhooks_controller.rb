@@ -21,6 +21,7 @@ module Api
         check = repository.checks.create!
         RepositoryCheckJob.perform_later(repository.id, check.id)
         redirect_to repository_path(@repository), notice: "Check has been scheduled"
+      #   test webhook
       end
     end
 
