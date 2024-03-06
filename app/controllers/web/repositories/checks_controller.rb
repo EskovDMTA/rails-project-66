@@ -7,19 +7,15 @@ module Web
         check_result = JSON.parse(@check.check_result)
         @lint_errors = check_result['parsed_result']
         @lint_status = check_result['exit_status']
+        @errors_count = check_result['error_count']
       end
 
       def create
         @repository = Repository.find(params[:repository_id])
-        linter_client = Linter::LinterFactory.create_linter(@repository.language)
-        repo_path = Linter::RepositoryDownloader.download(@repository.git_url)
+        check = @repository.checks.create!
 
-        check_lint_result, error_lint_status = linter_client.lint(repo_path)
-        commit_id = linter_client.current_commit(repo_path)
-        unless @repository.checks.create(repo_path:, check_result: check_lint_result.to_json,
-                                         status: error_lint_status, commit_id: commit_id)
-          redirect_to root_path
-        end
+        RepositoryCheckJob.perform_later(@repository.id, check.id)
+        redirect_to repository_path(@repository), notice: "Check has been scheduled"
       end
     end
   end

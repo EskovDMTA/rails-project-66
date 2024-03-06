@@ -2,6 +2,7 @@
 
 module Web
   class AuthController < Web::ApplicationController
+
     def callback
       auth = request.env['omniauth.auth']
       user = User.find_by(provider: auth['provider'], uid: auth['uid']) || create_with_omniauth(auth)

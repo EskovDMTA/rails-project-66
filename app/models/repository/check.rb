@@ -2,24 +2,21 @@ class Repository::Check < ApplicationRecord
   include AASM
 
   belongs_to :repository
-  include AASM
 
   aasm do
     state :pending, initial: true
-    state :lint_running, :complete, :error
+    state :running, :passed, :failed
 
-    event :start_check do
-      transitions from: :pending, to: :eslint_running
+    event :run do
+      transitions from: :pending, to: :running
     end
 
-    event :complete_eslint do
-      transitions from: :eslint_running, to: :eslint_complete
+    event :pass do
+      transitions from: :running, to: :passed
     end
 
-    event :handle_error do
-      transitions to: :error
+    event :fail do
+      transitions from: :running, to: :failed
     end
-
   end
-
 end

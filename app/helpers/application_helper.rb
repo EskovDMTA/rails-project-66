@@ -13,4 +13,17 @@ module ApplicationHelper
   def commit_link(full_name, commit_id)
     "https://github.com/#{full_name}/commit/#{commit_id}"
   end
+
+  def flash_class(type)
+    case type
+    when 'success'
+      'alert-success'
+    when 'error'
+      'alert-danger'
+    when 'alert'
+      'alert-warning'
+    else
+      'alert-info'
+    end
+  end
 end

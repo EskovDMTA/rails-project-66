@@ -8,25 +8,27 @@ module Linter
       raise NotImplementedError, "#{self.class} must implement the 'lint' method."
     end
 
-    def run_command(command)
-      stdout, exit_status = Open3.capture2e(command)
-      [stdout, exit_status]
+    def current_commit(repo_path)
+      result = CommandRunner.run('git log -n 1 --pretty=format:"%h"', chdir: Rails.root.join(repo_path))
+      result[:exit_status].zero? ? result[:stdout].strip : ''
     end
 
-    def current_commit(repo_path)
-      commit_id_command = 'git log -n 1 --pretty=format:"%h"'
-      Dir.chdir(repo_path) do
-        stdout, exit_status = run_command(commit_id_command)
-        return stdout if exit_status.exitstatus.zero?
-
-        ''
-      end
+    def build_parsing_result(stdout, exit_status)
+      {
+        parsed_result: parsing_result(stdout),
+        error_count: count_errors(stdout),
+        exit_status: exit_status
+      }
     end
 
     private
 
-    def build_parsing_result(stdout, exit_status)
-      { parsed_result: parsing_result(stdout), exit_status: exit_status.exitstatus }
+    def parsing_result(stdout)
+      raise NotImplementedError, "#{self.class} must implement the 'parsing_result' method."
+    end
+
+    def count_errors(stdout)
+      raise NotImplementedError, "#{self.class} must implement the 'count_errors' method."
     end
   end
 end

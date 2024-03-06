@@ -1,5 +1,5 @@
 tbody
-  - lint_errors['files'].each do |element|
+  - lint_errors.each do |element|
     tr
       td[colspan="3"]
         = link_to element['path'], repository_link(repository.full_name, check.commit_id,

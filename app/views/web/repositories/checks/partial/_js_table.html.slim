@@ -1,14 +1,14 @@
 tbody
-  - lint_errors.each do |element|
+  - lint_errors.each do |error_file|
     tr
       td[colspan="3"]
-        = link_to formatted_file_name(element['filePath']), repository_link(repository.full_name, check.commit_id,
-                formatted_file_name(element['filePath'])), target: "_blank"
-    - element['messages'].each do |line|
+        = link_to formatted_file_name(error_file.keys.first), repository_link(repository.full_name, check.commit_id,
+                formatted_file_name(error_file.keys.first)), target: "_blank"
+    - error_file.values.first.each do |line|
       tr
         td.col-md-8
           = line['message']
         td
-          = line['rule_id']
+          = line["ruleId"]
         td
-          = line['line']
+          = "#{line["line"]}:#{line["column"]}"

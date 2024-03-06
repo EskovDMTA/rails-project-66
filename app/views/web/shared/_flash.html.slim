@@ -1,0 +1,6 @@
+- flash.any?
+.container.my-2
+  - flash.each do |key, value|
+    div[class="alert #{flash_class(key)} alert-dismissible fade show" role="alert"]
+      = value
+      button.btn-close[type="button" data-bs-dismiss="alert" aria-label="Close"]

@@ -5,22 +5,22 @@ table.table
       td
         | Дата создания
       td
-        = @check.created_at
+        = @check.created_at.strftime("%d %B %Y, %H:%M")
     tr
       td
         | Статус
       td
-        = @check.status.to_s
+        =
     tr
       td
         | Проверка пройдена
       td
-        = @check.status
+        = @check.aasm_state
     tr
       td
         | Количество замечаний
       td
-        | 137
+        = @errors_count
     tr
       td
         | ID коммита
