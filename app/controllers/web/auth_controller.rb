@@ -2,18 +2,20 @@
 
 module Web
   class AuthController < Web::ApplicationController
-
     def callback
       auth = request.env['omniauth.auth']
       user = User.find_by(provider: auth['provider'], uid: auth['uid']) || create_with_omniauth(auth)
       user.token = auth['credentials']['token']
-      user.save
-      session[:user_id] = user.id
-      redirect_to root_path, notice: t('authentication.login')
+      if user.save
+        sign_in(user)
+        redirect_to root_path, notice: t('authentication.login')
+      else
+        redirect_to root_path, alert: "#{t('authentication.login_error')}: #{user.errors.full_messages.join('\n')}"
+      end
     end
 
     def destroy
-      session[:user_id] = nil
+      sign_out
       redirect_to root_path, notice: t('authentication.logout')
     end
 

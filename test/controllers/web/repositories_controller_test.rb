@@ -1,13 +1,17 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get web_repositories_show_url
-    assert_response :success
-  end
+require 'test_helper'
 
-  test "should get index" do
-    get web_repositories_index_url
-    assert_response :success
+module Web
+  class RepositoriesControllerTest < ActionDispatch::IntegrationTest
+    test 'should get show' do
+      get web_repositories_show_url
+      assert_response :success
+    end
+
+    test 'should get index' do
+      get web_repositories_index_url
+      assert_response :success
+    end
   end
 end

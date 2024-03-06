@@ -1,14 +1,18 @@
+# frozen_string_literal: true
+
 module Web
   class RepositoriesController < ApplicationController
-    before_action :authenticate_user!, only: %i[index show new create]
+    before_action :authenticate_user!
     before_action :git_client, only: %i[new create]
 
     def index
+      authorize Repository
       @repositories = current_user.repositories
     end
 
     def show
       @repository = Repository.find(params[:id])
+      authorize @repository
       @checks = Repository::Check.where(repository_id: @repository.id)
     end
 

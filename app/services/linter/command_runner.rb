@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Linter
   module CommandRunner
     def self.run(command, chdir: nil)
@@ -10,7 +12,5 @@ module Linter
       end
       { stdout:, stderr:, exit_status: status.exitstatus }
     end
-
   end
 end
-

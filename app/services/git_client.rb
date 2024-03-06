@@ -1,5 +1,6 @@
-class GitClient
+# frozen_string_literal: true
 
+class GitClient
   def initialize(access_token)
     @access_token = access_token
   end
@@ -30,5 +31,4 @@ class GitClient
   def user_repositories
     client.repos
   end
-
 end

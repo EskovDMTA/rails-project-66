@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Linter
   class RubyLinter < BaseLinter
     def lint(repo_path)

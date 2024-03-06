@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-
   def formatted_file_name(file_name)
-    file_name.split("tmp/repositories")[1].split("/")[2..].join("/")
+    file_name.split('tmp/repositories')[1].split('/')[2..].join('/')
   end
 
   def repository_link(full_name, commit_id, file_path)

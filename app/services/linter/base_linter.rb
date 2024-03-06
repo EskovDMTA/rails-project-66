@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Linter
   class BaseLinter
     def initialize(language = self.class)
@@ -17,7 +19,7 @@ module Linter
       {
         parsed_result: parsing_result(stdout),
         error_count: count_errors(stdout),
-        exit_status: exit_status
+        exit_status:
       }
     end
 

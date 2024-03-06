@@ -1,22 +1,26 @@
-class Repository::Check < ApplicationRecord
-  include AASM
+# frozen_string_literal: true
 
-  belongs_to :repository
+module Repository
+  class Check < ApplicationRecord
+    include AASM
 
-  aasm do
-    state :pending, initial: true
-    state :running, :passed, :failed
+    belongs_to :repository
 
-    event :run do
-      transitions from: :pending, to: :running
-    end
+    aasm do
+      state :pending, initial: true
+      state :running, :passed, :failed
 
-    event :pass do
-      transitions from: :running, to: :passed
-    end
+      event :run do
+        transitions from: :pending, to: :running
+      end
 
-    event :fail do
-      transitions from: :running, to: :failed
+      event :pass do
+        transitions from: :running, to: :passed
+      end
+
+      event :fail do
+        transitions from: :running, to: :failed
+      end
     end
   end
 end

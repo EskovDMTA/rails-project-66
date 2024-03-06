@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 # # frozen_string_literal: true
 
 module Linter
   class JsLinter < BaseLinter
     def lint(repo_path)
-      result = CommandRunner.run("yarn run eslint --format json -c #{Rails.root.join(".eslintrc.js")} #{Rails.root.join(repo_path)}")
+      result = CommandRunner.run(
+        "yarn run eslint --format json -c #{Rails.root.join('.eslintrc.js')} #{Rails.root.join(repo_path)}"
+      )
       build_parsing_result(result[:stdout], result[:exit_status])
     end
 
@@ -26,7 +30,7 @@ module Linter
 
     def count_errors(stdout)
       lint_errors = parsing_result(stdout)
-      lint_errors.sum {|error_file| error_file.values.first.count}
+      lint_errors.sum { |error_file| error_file.values.first.count }
     end
   end
 end

@@ -9,4 +9,16 @@ AllCops:
     - 'script/**/*'
 
 Layout/LineLength:
-  Max: 120
+  Max: 125
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false

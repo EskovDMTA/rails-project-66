@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Web
   module Repositories
     class ChecksController < Web::Repositories::ApplicationController
@@ -15,7 +17,7 @@ module Web
         check = @repository.checks.create!
 
         RepositoryCheckJob.perform_later(@repository.id, check.id)
-        redirect_to repository_path(@repository), notice: "Check has been scheduled"
+        redirect_to repository_path(@repository), notice: 'Check has been scheduled'
       end
     end
   end

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Linter
   class LinterFactory
     def self.create_linter(language)
       case language.downcase
-      when "javascript"
+      when 'javascript'
         JsLinter.new
-      when "ruby"
+      when 'ruby'
         RubyLinter.new
       else
         raise ArgumentError, "Unsupported language: #{language}"

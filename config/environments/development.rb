@@ -46,13 +46,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.mailtrap.io',
-    :port           => '2525',
-    :authentication => :cram_md5,
-    :user_name      => 'your_mailtrap_username',
-    :password       => 'your_mailtrap_password',
-    :domain         => 'your_domain.com', # Или используйте ваш домен Mailtrap
-    :enable_starttls_auto => true
+    address: 'smtp.mailtrap.io',
+    port: '2525',
+    authentication: :cram_md5,
+    user_name: 'your_mailtrap_username',
+    password: 'your_mailtrap_password',
+    domain: 'your_domain.com', # Или используйте ваш домен Mailtrap
+    enable_starttls_auto: true
   }
 
   # Print deprecation notices to the Rails logger.
@@ -84,9 +84,17 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: ENV.fetch('MAIL_TRAP_PASSWORD', nil),
+    password: 'f79d07c78ff4f5',
+    address: 'sandbox.smtp.mailtrap.io',
+    host: 'sandbox.smtp.mailtrap.io',
+    port: '2525',
+    authentication: :login
+  }
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
   config.hosts.clear
-
 end

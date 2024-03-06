@@ -17,7 +17,7 @@ module RepositoryQualityAnalyzer
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-    routes.default_url_options = { host: ENV['BASE_URL'] }
+    routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
     config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
@@ -27,12 +27,8 @@ module RepositoryQualityAnalyzer
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    # config.action_mailer.delivery_method = :mailtrap
-    # config.action_mailer.mailtrap_settings = {
-    #   api_key: ENV.fetch('MAILTRAP_API_KEY')
-    # }
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-    routes.default_url_options = { host: ENV['BASE_URL'] }
+    routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RepositoryCheckJob < ApplicationJob
   queue_as :default
   sidekiq_options retry: 0
@@ -16,9 +18,9 @@ class RepositoryCheckJob < ApplicationJob
       check.pass!
     else
       check.fail!
-      UserMailer.check_failure_email(repository).deliver_now
+      CheckMailer.check_failure_email(repository).deliver_now
     end
-    check.update!(repo_path: repo_path, check_result: check_result.to_json, commit_id: commit_id)
+    check.update!(repo_path:, check_result: check_result.to_json, commit_id:)
   ensure
     Linter::RepositoryDownloader.clean_up(repo_path) if repo_path
   end
