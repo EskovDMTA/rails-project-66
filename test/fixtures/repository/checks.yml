@@ -1,6 +1,6 @@
 DEFAULTS: &DEFAULTS
   aasm_state: checking
-  status: false
+  passed: false
 
 one:
   <<: *DEFAULTS
