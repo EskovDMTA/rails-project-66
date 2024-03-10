@@ -2,7 +2,7 @@
 
 module Web
   module Repositories
-    class ApplicationController < ApplicationController
+    class ApplicationController < Web::ApplicationController
     end
   end
 end

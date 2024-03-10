@@ -2,7 +2,7 @@
 
 module Web
   module Repositories
-    class ChecksController < ApplicationController
+    class ChecksController < Web::Repositories::ApplicationController
       def show
         @repository = ::Repository.find(params[:repository_id])
         @check = ::Repository::Check.find(params[:id])
