@@ -6,7 +6,6 @@ require 'rails/test_help'
 require 'webmock/minitest'
 require_relative '../app/lib/application_container'
 
-
 WebMock.disable_net_connect!
 OmniAuth.config.test_mode = true
 
