@@ -2,10 +2,11 @@
 
 module Web
   module Repositories
-    class ChecksController < Web::Repositories::ApplicationController
+    class ChecksController < ApplicationController
       def show
         @repository = ::Repository.find(params[:repository_id])
         @check = ::Repository::Check.find(params[:id])
+        authorize @check
         check_result = JSON.parse(@check.check_result)
         @lint_errors = check_result['parsed_result']
         @lint_status = check_result['exit_status']

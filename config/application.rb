@@ -16,8 +16,6 @@ module RepositoryQualityAnalyzer
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
-
-    routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
     config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
@@ -27,6 +25,7 @@ module RepositoryQualityAnalyzer
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.default_locale = :ru
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
     routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }

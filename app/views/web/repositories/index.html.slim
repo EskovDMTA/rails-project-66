@@ -1,15 +1,15 @@
-= link_to "Добавить", new_repository_path, class: 'btn btn-primary'
+= link_to t('.add_button'), new_repository_path, class: 'btn btn-primary'
 - if @repositories.present?
   .row.mt-2
     table.table.table-striped.table-hover
       thead
         tr
           th
-            = "Название"
+            = t('.table_repository_name')
           th
-            = "Язык"
+            = t('.table_repository_language')
           th
-            = "Статус последней проверки"
+            = t('.table_repository_check_status')
       tbody
         - @repositories.each do |repo|
           tr
@@ -18,4 +18,7 @@
             td
               = repo.language
             td
-              = time_ago_in_words(repo.created_at).to_s
+              - if repo.checks.present?
+                = repo.checks.last.status
+              - else
+                = t('.no_checks_available')

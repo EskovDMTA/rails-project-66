@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  class RepositoriesController < ApplicationController
+  class RepositoriesController < Web::ApplicationController
     before_action :authenticate_user!
     before_action :git_client, only: %i[new create]
 

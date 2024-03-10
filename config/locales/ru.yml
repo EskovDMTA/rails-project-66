@@ -1,0 +1,72 @@
+ru:
+  activerecord:
+    attributes:
+      repository/check:
+        aasm_states:
+          checking: В процессе
+          created: Запущена
+          failed: Завершена с ошибкой
+          finished: Завершена
+  layouts:
+    application:
+      title: Анализатор Качества Репозиториев
+  web:
+    home:
+      index:
+        project_name: Анализатор качества репозиториев
+        project_description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
+
+    repositories:
+      index:
+        add_button: Добавить
+        table_repository_name: Название
+        table_repository_language: Язык
+        table_repository_check_status: Статус последней проверки
+        no_checks_available: '-'
+
+      new:
+        button_create_repo: Создать репозиторий
+        label_github: GitHub *
+      show:
+        button_check_repo: Проверить
+        repository_name: Название
+        repository_language: Язык
+        repository_created_at: Дата создания
+        repository_updated: Дата обновления
+        table_check_status: Статус
+        table_check_commit: ID коммита
+        table_check_state: Проверка пройдена?
+        table_check_created_at: Дата создания
+      checks:
+        show:
+          button_to_repo: Перейти к репозиторию
+          check_number: Проверка
+          check_created_at: Дата создания
+          check_status: Статус
+          check_status_end: Проверка пройдена
+          check_errors_count: Количество замечаний
+          commit_id: ID коммита
+          check_message: Сообщение
+          check_id_rules: Идентификатор правила
+          check_column_string: Строка и символ
+
+
+
+    shared:
+
+
+
+  check_mailer:
+    check_failure_email:
+      lint_report: Отчет о проверке кода
+      greeting: Уважаемый(ая)
+      lint_error_message: К сожалению, ваша последняя проверка кода завершилась с ошибками
+      fix_errors_message: Пожалуйста, исправьте ошибки и попробуйте снова.
+  authentication:
+    login: Вы успешно вошли
+    logout: Вы вышли из системы
+
+  pundit:
+    bulletin_policy:
+      login_or_registration: 'Войдите в систему для загрузки репозиториев.'
+

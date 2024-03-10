@@ -91,4 +91,5 @@ end
 
 group :production do
   gem 'pg'
+  gem 'redis'
 end

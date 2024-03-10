@@ -1,23 +1,23 @@
 .mb-4
   h1
     = @repository.full_name
-= button_to "Проверить", repository_checks_path(@repository.id), class: "btn btn-primary mb-4", data: {turbo: false}
+= button_to t('.button_check_repo'), repository_checks_path(@repository.id), class: "btn btn-primary mb-4", data: {turbo: false}
 p
   strong.me-2
-    | Название
+    = t('.repository_name')
   = @repository.full_name
 p
   strong.me-2
-    | Язык
+    = t('.repository_language')
   = @repository.language
 p
   strong.me-2
-    | Дата создания
+    = t('.repository_created_at')
   = time_ago_in_words(@repository.created_at).to_s
 p
   strong.me-2
-    | Дата обновления
-  = @repository.updated_at
+    = t('.repository_updated')
+  = time_ago_in_words(@repository.updated_at)
 hr
 - if @checks.present?
   .row.mt-2
@@ -26,13 +26,13 @@ hr
         tr
           th
           th
-            = "Статус"
+            = t('.table_check_status')
           th
-            = "ID коммита?"
+            = t('.table_check_commit')
           th
-            = "Проверка пройдена?"
+            = t('.table_check_state')
           th
-            = "Дата создания?"
+            = t('.table_check_created_at')
       tbody
         - @checks.each do |check|
           tr
@@ -40,7 +40,7 @@ hr
               = link_to check.id, repository_check_path(@repository.id, check.id)
             td
               span
-                = check.aasm_state
+                = check.state_translation
             td
               = link_to check.commit_id, commit_link(@repository.full_name, check.commit_id), target: "_blank"
             td

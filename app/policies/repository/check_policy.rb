@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Repository
+class Repository
   class CheckPolicy < ApplicationPolicy
     def show?
       user_owns_repository?

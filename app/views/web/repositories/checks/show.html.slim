@@ -1,43 +1,46 @@
-= link_to "Перейти к репозиторию", repository_path(params[:repository_id]), class: "btn btn-primary mb-4"
+= link_to t('.button_to_repo'), repository_path(params[:repository_id]), class: "btn btn-primary mb-4"
+h1
+  = "#{t('.check_number')} ##{@check.id}"
 table.table
   tbody
     tr
       td
-        | Дата создания
+        = t('.check_created_at')
       td
         = @check.created_at.strftime("%d %B %Y, %H:%M")
     tr
       td
-        | Статус
+        = t('.check_status')
       td
-        =
+        = @check.state_translation
     tr
       td
-        | Проверка пройдена
+        = t('.check_status_end')
       td
-        = @check.aasm_state
+        = @check.status
     tr
       td
-        | Количество замечаний
+        = t('.check_errors_count')
       td
         = @errors_count
     tr
       td
-        | ID коммита
+        = t('.commit_id')
       td
         = link_to @check.commit_id, commit_link(@repository.full_name, @check.commit_id), target: "_blank"
 .mb-5
-table.table.table-hover.mb-5
-  thead
-    tr
-      th
-        | Сообщение
-      th
-        | Идентификатор правила
-      th
-        | Строка и символ
+- if @errors_count != 0
+  table.table.table-hover.mb-5
+    thead
+      tr
+        th
+          = t('.check_message')
+        th
+          = t('.check_id_rules')
+        th
+          = t('.check_column_string')
 
-  - if @repository.language.downcase == 'javascript'
-    = render partial: "web/repositories/checks/partial/js_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
-  - else
-    = render partial: "web/repositories/checks/partial/ruby_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
+    - if @repository.language.downcase == 'javascript'
+      = render partial: "web/repositories/checks/partial/js_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
+    - else
+      = render partial: "web/repositories/checks/partial/ruby_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
