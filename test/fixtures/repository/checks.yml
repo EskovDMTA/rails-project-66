@@ -1,9 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  aasm_state: checking
+  status: false
 
 one:
+  <<: *DEFAULTS
   repository: one
-  status: MyString
-
-two:
-  repository: two
-  status: MyString

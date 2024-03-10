@@ -1,15 +1,16 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  full_name: MyString
-  language: MyString
-  git_url: MyString
-  ssh_url: MyString
+  name: ruby_repo
+  full_name: eskovdmta/ruby_repo
+  language: ruby
+  git_url: http://github.git/eskovdmta/ruby_repo
+  ssh_url: http://github.git/eskovdmta/ruby_repo.ssh
+  user: one
 
-two:
-  name: MyString
-  full_name: MyString
-  language: MyString
-  git_url: MyString
-  ssh_url: MyString
+no_check:
+  name: js_repo
+  full_name: eskovdmta/js_repo
+  language: js
+  git_url: http://github.git/eskovdmta/js_repo
+  ssh_url: http://github.git/eskovdmta/js_repo.ssh
+  user: one
+

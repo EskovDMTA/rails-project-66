@@ -2,16 +2,48 @@
 
 require 'test_helper'
 
-module Web
-  class RepositoriesControllerTest < ActionDispatch::IntegrationTest
-    test 'should get show' do
-      get web_repositories_show_url
-      assert_response :success
-    end
+class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:one)
+    @repo = repositories(:one)
+    sign_in @user
+  end
 
-    test 'should get index' do
-      get web_repositories_index_url
-      assert_response :success
-    end
+  test '#index' do
+    get repositories_path
+
+    assert_response :success
+  end
+
+  test 'with not auth user' do
+    delete session_path
+
+    get repositories_path
+
+    assert_redirected_to root_path default_url_options
+  end
+
+  test '#show' do
+    get repository_path(@repo)
+
+    assert_response :success
+  end
+
+  test '#new' do
+    get new_repository_path
+
+    assert_response :success
+  end
+
+  test '#create' do
+    attrs = {
+      github_id: 1_296_269
+    }
+
+    post repositories_path, params: { repository: attrs }
+    new_repo = Repository.find_by(attrs.merge({ user_id: @user.id, full_name: 'octocat/Hello-World' }))
+
+    assert { new_repo }
+    assert_redirected_to repositories_path default_url_options
   end
 end

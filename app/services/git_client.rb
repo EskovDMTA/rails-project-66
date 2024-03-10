@@ -11,7 +11,6 @@ class GitClient
 
   def repository_params(git_hub_repo_id)
     current_repo = user_repositories.filter { |repo| repo[:id] == git_hub_repo_id.to_i }.first
-    puts current_repo[:language]
     {
       name: current_repo[:name],
       full_name: current_repo[:full_name],
