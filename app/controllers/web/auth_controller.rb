@@ -4,8 +4,15 @@ module Web
   class AuthController < Web::ApplicationController
     def callback
       auth = request.env['omniauth.auth']
-      user = User.find_by(provider: auth['provider'], uid: auth['uid']) || create_with_omniauth(auth)
-      user.token = auth['credentials']['token']
+      user = User.find_or_initialize_by(email: auth['info']['email']) do |u|
+        u.provider = auth['provider']
+        u.uid = auth['uid']
+        u.name = auth['info']['name']
+        u.nickname = auth['info']['name']
+        u.image_url = auth['info']['image']
+        u.token = auth['credentials']['token']
+      end
+
       if user.save
         sign_in(user)
         redirect_to root_path, notice: t('authentication.login')

@@ -14,7 +14,7 @@ class GitClientStub
       language: 'javascript',
       git_url: 'https://github.com/eskovdmta/quality-analyzer.git',
       ssh_url: 'https://github.com/eskovdmta/quality-analyzer.git',
-      git_id: 510_158_155
+      github_id: 510_158_155
     }
   end
 end

@@ -15,9 +15,9 @@ class RepositoryCheckJob < ApplicationJob
     commit_id = linter_client.current_commit(repo_path)
 
     if check_result[:exit_status].zero?
-      check.status = true
+      check.passed = true
     else
-      check.status = false
+      check.passed = false
       CheckMailer.check_failure_email(repository).deliver_now
     end
     check.finish!

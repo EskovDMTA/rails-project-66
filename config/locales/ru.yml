@@ -3,7 +3,7 @@ ru:
     attributes:
       repository/check:
         aasm_states:
-          checking: В процессе
+          pending: В процессе
           created: Запущена
           failed: Завершена с ошибкой
           finished: Завершена
@@ -38,6 +38,8 @@ ru:
         table_check_state: Проверка пройдена?
         table_check_created_at: Дата создания
       checks:
+        create:
+          check_start: Проверка началась
         show:
           button_to_repo: Перейти к репозиторию
           check_number: Проверка
@@ -49,12 +51,6 @@ ru:
           check_message: Сообщение
           check_id_rules: Идентификатор правила
           check_column_string: Строка и символ
-
-
-
-    shared:
-
-
 
   check_mailer:
     check_failure_email:
@@ -68,5 +64,21 @@ ru:
 
   pundit:
     bulletin_policy:
-      login_or_registration: 'Войдите в систему для загрузки репозиториев.'
+      login_or_registration: Войдите в систему для загрузки репозиториев.
 
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Предыдущая"
+      next: "Следующая &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Всего %{entry_name} <b>%{first}–%{last}</b> из <b>%{total}</b>"

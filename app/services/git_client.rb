@@ -17,7 +17,7 @@ class GitClient
       language: current_repo[:language],
       git_url: current_repo[:clone_url],
       ssh_url: current_repo[:ssh_url],
-      git_id: git_hub_repo_id
+      github_id: git_hub_repo_id
     }
   end
 

@@ -44,25 +44,26 @@ gem 'tzinfo-data', platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-gem 'sentry-ruby'
-gem 'sentry-rails'
-gem 'slim'
+gem 'aasm'
+gem 'dry-container'
+gem 'enumerize'
+gem 'faraday-retry'
+gem 'kaminari'
+gem 'mailtrap'
+gem 'octokit', '~> 5.0'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
-gem "octokit", "~> 5.0"
-gem "enumerize"
-gem "simple_form"
-gem "aasm"
+gem 'pundit'
 gem 'rubocop'
+gem 'rubocop-minitest'
 gem 'rubocop-rails'
 gem 'rubocop-slim'
-gem 'rubocop-minitest'
-gem 'faraday-retry'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 gem 'sidekiq'
-gem 'mailtrap'
-gem 'pundit'
-gem 'dry-container'
+gem 'simple_form'
+gem 'slim'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -87,9 +88,9 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'minitest-power_assert'
   gem 'selenium-webdriver'
   gem 'webmock'
-  gem 'minitest-power_assert'
 end
 
 group :production do

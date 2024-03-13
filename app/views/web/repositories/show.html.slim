@@ -45,6 +45,7 @@ hr
               = link_to check.commit_id, commit_link(@repository.full_name, check.commit_id), target: "_blank"
             td
               span
-                = check.status
+                = check.passed
             td
               = time_ago_in_words(check.created_at).to_s
+  = paginate @checks

@@ -19,6 +19,7 @@
               = repo.language
             td
               - if repo.checks.present?
-                = repo.checks.last.status
+                = repo.checks.last.passed
               - else
                 = t('.no_checks_available')
+  = paginate @repositories

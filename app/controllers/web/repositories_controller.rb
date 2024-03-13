@@ -7,13 +7,13 @@ module Web
 
     def index
       authorize Repository
-      @repositories = current_user.repositories
+      @repositories = current_user.repositories.order(created_at: :desc).page(params[:page]).per(1)
     end
 
     def show
       @repository = Repository.find(params[:id])
       authorize @repository
-      @checks = Repository::Check.where(repository_id: @repository.id)
+      @checks = Repository::Check.where(repository_id: @repository.id).page(params[:page]).per(10)
     end
 
     def new
