@@ -3,7 +3,7 @@ en:
     attributes:
       repository/check:
         aasm_states:
-          pending: In progress
+          running: In progress
           created: Started
           failed: Completed with errors
           finished: Completed

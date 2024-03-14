@@ -3,7 +3,7 @@ ru:
     attributes:
       repository/check:
         aasm_states:
-          pending: В процессе
+          running: В процессе
           created: Запущена
           failed: Завершена с ошибкой
           finished: Завершена
