@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
-class CommandRunnerStub
-  # rubocop:disable Lint/UnusedMethodArgument
-  def self.run(_command, chdir: nil)
-    { stdout: '', stderr:, exit_status: 0 }
+module Stubs
+  class CommandRunnerStub
+    # rubocop:disable Lint/UnusedMethodArgument
+    def self.run(_command, chdir: nil)
+      { stdout: '', stderr:, exit_status: 0 }
+    end
+
+    # rubocop:enable Lint/UnusedMethodArgument
   end
-  # rubocop:enable Lint/UnusedMethodArgument
 end
