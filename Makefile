@@ -8,6 +8,9 @@ install:
 test:
 	bundle exec rake test
 
+start:
+	bundle exec rails s
+
 lint:
 	bundle exec rubocop
 
