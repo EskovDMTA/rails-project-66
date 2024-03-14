@@ -52,7 +52,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: mysite_production
-  username: mysite
+  database: <%= ENV['DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
