@@ -7,7 +7,7 @@ module Web
 
     def index
       authorize Repository
-      @repositories = current_user.repositories.order(created_at: :desc).page(params[:page]).per(1)
+      @repositories = current_user.repositories.order(created_at: :desc).page(params[:page]).per(20)
     end
 
     def show
