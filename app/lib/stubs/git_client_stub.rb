@@ -8,7 +8,7 @@ module Stubs
       ['eskovdmta/quality-analyzer', 510_158_155]
     end
 
-    def fetch_repo(_github_id)
+    def repository_params(_github_id)
       {
         name: 'quality-analyzer',
         full_name: 'eskovdmta/quality-analyzer',
@@ -17,6 +17,9 @@ module Stubs
         ssh_url: 'https://github.com/eskovdmta/quality-analyzer.git',
         github_id: 510_158_155
       }
+    end
+
+    def user_repositories
     end
   end
 end
