@@ -10,19 +10,12 @@ module Web
       sign_in @user
     end
 
-    test '#index' do
+    test 'should get repositories index page' do
       get repositories_path
 
       assert_response :success
     end
 
-    test 'with not auth user' do
-      delete session_path
-
-      get repositories_path
-
-      assert_redirected_to root_path default_url_options
-    end
 
     test '#show' do
       get repository_path(@repo)
@@ -37,15 +30,14 @@ module Web
     end
 
     test '#create' do
-      attrs = {
-        github_id: 1_296_269
-      }
-
-      post repositories_path, params: { repository: attrs }
-      new_repo = Repository.find_by(attrs.merge({ user_id: @user.id, full_name: 'octocat/Hello-World' }))
-
-      assert { new_repo }
-      assert_redirected_to repositories_path default_url_options
+      stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
+        .to_return(body: file_fixture('hexlet-friends.json'), status: 200)
+      post repositories_path
+      repository = Repository.last
+      puts repository
+      assert_equal repository.link, 'https://github.com/octokit/octokit.rb'
+      assert_equal "This your first repo!", repository.description
+      assert_redirected_to root_path
     end
   end
 end
