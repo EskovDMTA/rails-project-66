@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class RepositoryCheckJob < ApplicationJob
+class RepositoryCheckJob
+  include Sidekiq::Job
   queue_as :default
   sidekiq_options retry: 0
 

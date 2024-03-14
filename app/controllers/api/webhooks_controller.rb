@@ -21,7 +21,7 @@ module Api
       return unless repository
 
       check = repository.checks.create!
-      RepositoryCheckJob.perform_later(repository.id, check.id)
+      RepositoryCheckJob.perform_async(repository.id, check.id)
     end
   end
 end
