@@ -6,7 +6,9 @@ class GitClient
   end
 
   def fetch_user_repositories_name_and_id
-    user_repositories.sort_by(& :full_name).map { |repo| [repo.full_name, repo.id] }
+    user_repositories.select { |repo| repo.language == 'JavaScript' || repo.language == 'Ruby' }
+                     .sort_by(& :full_name)
+                     .map { |repo| [repo.full_name, repo.id] }
   end
 
   def repository_params(git_hub_repo_id)
