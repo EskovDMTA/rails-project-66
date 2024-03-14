@@ -14,7 +14,7 @@ module Web
       def create
         check = @repository.checks.create!
 
-        RepositoryCheckJob.perform_now(@repository.id, check.id)
+        RepositoryCheckJob.perform_inline(@repository.id, check.id)
         redirect_to repository_path(@repository), notice: t('.check_start')
       end
 
