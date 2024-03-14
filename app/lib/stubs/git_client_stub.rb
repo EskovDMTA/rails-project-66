@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 module Stubs
   class GitClientStub
     def initialize(*) end
