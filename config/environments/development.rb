@@ -75,8 +75,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch('MAIL_TRAP_PASSWORD', nil),
-    password: 'f79d07c78ff4f5',
+    user_name: ENV('MAIL_TRAP_USER_NAME'),
+    password: ENV('MAIL_TRAP_PASSWORD'),
     address: 'sandbox.smtp.mailtrap.io',
     host: 'sandbox.smtp.mailtrap.io',
     port: '2525',
