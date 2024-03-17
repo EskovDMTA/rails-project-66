@@ -47,6 +47,7 @@ gem 'bootsnap', require: false
 gem 'aasm'
 gem 'dry-container'
 gem 'enumerize'
+gem 'faker'
 gem 'faraday-retry'
 gem 'kaminari'
 gem 'mailtrap'
