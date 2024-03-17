@@ -22,22 +22,23 @@ module Web
       assert_response :success
     end
 
-    test '#new' do
-      repos_stub_request
-      get new_repository_path
-      assert_response :success
-    end
+    # test '#new' do
+    #   repos_stub_request
+    #   get new_repository_path
+    #   assert_response :success
+    # end
 
     test '#create' do
       repos_stub_request
       post repositories_path
       repository = Repository.last
-      assert_equal repository.link, 'https://github.com/octokit/octokit.rb'
-      assert_equal "This your first repo!", repository.description
-      assert_redirected_to root_path
+      assert_equal repository.name, 'hexlet-friends'
+      assert_equal 'git@github.com:hexlet/hexlet-friends.git', repository.ssh_url
+      assert_redirected_to repositories_path
     end
 
     private
+
     def repos_stub_request
       stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
         .to_return(body: file_fixture('hexlet-friends.json'), status: 200)

@@ -38,7 +38,7 @@ module Web
     end
 
     def git_client
-      @client = GitClient.new(user_github_token)
+      @client = ApplicationContainer[:git_client].call(user_github_token)
     end
 
     def user_github_token

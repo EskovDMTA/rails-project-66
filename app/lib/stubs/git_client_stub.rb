@@ -4,22 +4,30 @@ module Stubs
   class GitClientStub
     def initialize(*) end
 
-    def fetch_user_repositories_name_and_id
-      ['eskovdmta/quality-analyzer', 510_158_155]
-    end
-
-    def repository_params(_github_id)
+    def repository_params(git_hub_repo_id)
+      current_repo = user_repositories.filter { |repo| repo[:id] == 2 }.first
       {
-        name: 'quality-analyzer',
-        full_name: 'eskovdmta/quality-analyzer',
-        language: 'javascript',
-        git_url: 'https://github.com/eskovdmta/quality-analyzer.git',
-        ssh_url: 'https://github.com/eskovdmta/quality-analyzer.git',
-        github_id: 510_158_155
+        name: current_repo[:name],
+        full_name: current_repo[:full_name],
+        language: current_repo[:language],
+        git_url: current_repo[:clone_url],
+        ssh_url: current_repo[:ssh_url],
+        github_id: git_hub_repo_id
       }
     end
 
+    def fetch_user_repositories_name_and_id
+      user_repositories.select { |repo| repo.language == 'JavaScript' || repo.language == 'Ruby' }
+                       .sort_by(& :full_name)
+                       .map { |repo| [repo.full_name, repo.id] }
+    end
+
+    def client
+      Octokit::Client.new(access_token: @access_token, auto_paginate: true)
+    end
+
     def user_repositories
+      JSON.parse(client.repos, symbolize_names: true)
     end
   end
 end
