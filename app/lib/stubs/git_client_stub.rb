@@ -19,7 +19,7 @@ module Stubs
     def fetch_user_repositories_name_and_id
       puts user_repositories
       user_repositories.select { |repo| repo[:language] == 'javascript' || repo[:language] == 'ruby' }
-                       .sort_by(& :full_name)
+                       .sort_by { |repo| repo[:full_name] }
                        .map { |repo| [repo[:full_name], repo[:id]] }
     end
 
@@ -28,7 +28,7 @@ module Stubs
     end
 
     def user_repositories
-      json_data = File.read(('test/fixtures/files/response.json'))
+      json_data = File.read('test/fixtures/files/response.json')
       JSON.parse(json_data, symbolize_names: true)
     end
   end
