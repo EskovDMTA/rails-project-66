@@ -6,7 +6,7 @@ module Linter
   class JsLinter < BaseLinter
     def lint(repo_path)
       result = CommandRunner.run(
-        "yarn run eslint --format json -c #{Rails.root.join('.eslintrc.js')} #{Rails.root.join(repo_path)}"
+        "yarn run eslint --format json -c #{Rails.root.join('.eslintrc.js')} #{Rails.root.join(repo_path&.to_s)}"
       )
       build_parsing_result(result[:stdout], result[:exit_status])
     end
