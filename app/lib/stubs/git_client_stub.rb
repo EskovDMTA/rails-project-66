@@ -5,7 +5,7 @@ module Stubs
     def initialize(*) end
 
     def repository_params(git_hub_repo_id)
-      current_repo = user_repositories.filter { |repo| repo[:language] == 'javascript' }.first
+      current_repo = user_repositories.filter { |repo| repo[:id] == git_hub_repo_id }.first
       {
         name: current_repo[:name],
         full_name: current_repo[:full_name],
@@ -18,10 +18,9 @@ module Stubs
 
     def fetch_user_repositories_name_and_id
       puts user_repositories
-      user_repositories.select { |repo| repo.language == 'javascript' || repo.language == 'ruby' }
+      user_repositories.select { |repo| repo[:language] == 'javascript' || repo[:language] == 'ruby' }
                        .sort_by(& :full_name)
                        .map { |repo| [repo.full_name, repo.id] }
-
     end
 
     def client
