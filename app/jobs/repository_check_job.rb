@@ -13,8 +13,7 @@ class RepositoryCheckJob
     repo_path = Linter::RepositoryDownloader.download(repository.git_url)
 
     check.run!
-    linter_client.repo_path = repo_path
-    check_result = linter_client.lint
+    check_result = linter_client.lint(repo_path)
     commit_id = linter_client.current_commit(repo_path)
 
     if check_result[:exit_status].zero?
