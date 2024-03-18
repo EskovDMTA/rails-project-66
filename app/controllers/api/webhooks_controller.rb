@@ -7,8 +7,9 @@ module Api
     def github
       return unless request.headers['x-github-event'] == 'push'
 
-      render json: { 200 => 'ok' }
       run_lint(repository_params[:id])
+
+      render json: { message: t('.check_start') }, status: :ok
     end
 
     private
@@ -23,7 +24,6 @@ module Api
 
       check = repository.checks.create!
       RepositoryCheckJob.perform_inline(repository.id, check.id)
-
     end
   end
 end
