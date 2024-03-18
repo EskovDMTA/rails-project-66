@@ -39,7 +39,7 @@ table.table
           = t('.check_id_rules')
         th
           = t('.check_column_string')
-  - if @repository
+  - unless @repository.language.nil?
     - if @repository.language.downcase == 'javascript'
       = render partial: "web/repositories/checks/partial/js_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
     - else
