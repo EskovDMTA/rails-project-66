@@ -12,7 +12,7 @@ module Api
       when 'ping'
         head :ok
       else
-        render json 'not implementer request'
+        render json: 'not implementer request'
       end
     end
 
