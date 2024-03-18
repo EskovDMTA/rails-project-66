@@ -7,8 +7,8 @@ module Api
     def github
       return unless request.headers['x-github-event'] == 'push'
 
-      run_lint(repository_params[:id])
       render json: { 200 => 'ok' }
+      run_lint(repository_params[:id])
     end
 
     private
