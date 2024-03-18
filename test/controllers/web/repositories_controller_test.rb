@@ -26,8 +26,8 @@ module Web
       repos_stub_request
       post repositories_path
       repository = Repository.last
-      assert_equal repository.name, 'hexlet-friends'
-      assert_equal 'git@github.com:hexlet/hexlet-friends.git', repository.ssh_url
+      assert_equal repository.name, 'Hello-World'
+      assert_equal 'git@github.com:octocat/Hello-World.git', repository.ssh_url
       assert_redirected_to repositories_path
     end
 
@@ -35,7 +35,7 @@ module Web
 
     def repos_stub_request
       stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
-        .to_return(body: file_fixture('hexlet-friends.json'), status: 200)
+        .to_return(body: file_fixture('response.json'), status: 200)
     end
   end
 end
