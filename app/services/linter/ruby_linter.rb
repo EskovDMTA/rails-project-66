@@ -8,6 +8,8 @@ module Linter
       command = "bundle exec rubocop --safe --format json #{repo_path}"
 
       result = CommandRunner.run(command)
+      puts "****LINT_RESULT*****"
+      puts result
       build_parsing_result(result[:stdout], result[:exit_status])
     end
 
