@@ -5,8 +5,9 @@
 module Linter
   class JsLinter < BaseLinter
     def lint(repo_path)
+      absolute_repo_path = Rails.root.join(repo_path.to_s) unless repo_path.nil?
       result = CommandRunner.run(
-        "yarn run eslint --format json -c #{Rails.root.join('.eslintrc.js')} #{Rails.root.join(repo_path&.to_s)}"
+        "yarn run eslint --format json -c #{Rails.root.join('.eslintrc.js')} #{absolute_repo_path}"
       )
       build_parsing_result(result[:stdout], result[:exit_status])
     end

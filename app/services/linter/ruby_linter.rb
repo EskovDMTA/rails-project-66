@@ -3,7 +3,8 @@
 module Linter
   class RubyLinter < BaseLinter
     def lint(repo_path)
-      command = "bundle exec rubocop --safe --format json #{Rails.root.join(repo_path&.to_s)}"
+      absolute_repo_path = Rails.root.join(repo_path.to_s) unless repo_path.nil?
+      command = "bundle exec rubocop --safe --format json #{absolute_repo_path}"
 
       result = CommandRunner.run(command)
       build_parsing_result(result[:stdout], result[:exit_status])
