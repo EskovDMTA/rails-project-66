@@ -5,7 +5,7 @@ module Stubs
     def initialize(*) end
 
     def repository_params(git_hub_repo_id)
-      current_repo = user_repositories.filter { |repo| repo[:id] == 2 }.first
+      current_repo = user_repositories.filter { |repo| repo[:language] == 'javascript' }.first
       {
         name: current_repo[:name],
         full_name: current_repo[:full_name],
@@ -27,7 +27,8 @@ module Stubs
     end
 
     def user_repositories
-      JSON.parse(File.read(file_fixture('hexlet-friends.json')), symbolize_names: true)
+      json_data = File.read(('test/fixtures/files/hexlet-friends.json'))
+      JSON.parse(json_data, symbolize_names: true)
     end
   end
 end
