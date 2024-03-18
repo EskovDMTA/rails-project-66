@@ -1,6 +1,6 @@
 tbody
   - if lint_errors
-    - lint_errors.each do |error_file|
+    -lint_errors.each do |error_file|
       tr
         td[colspan="3"]
           = link_to formatted_file_name(error_file.keys.first), repository_link(repository.full_name, check.commit_id,

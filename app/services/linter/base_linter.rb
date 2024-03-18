@@ -6,7 +6,7 @@ module Linter
       @language = language
     end
 
-    def lint(file_path)
+    def lint
       raise NotImplementedError, "#{self.class} must implement the 'lint' method."
     end
 
