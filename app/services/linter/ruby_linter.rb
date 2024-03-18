@@ -2,7 +2,7 @@
 
 module Linter
   class RubyLinter < BaseLinter
-    def lint(repo_path)
+    def lint(repo_path = nil)
       repo_path = if repo_path.nil?
                     Dir.glob(Rails.root.join('tmp', 'repository', '*')).first
                   else
