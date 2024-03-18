@@ -25,7 +25,7 @@ module Web
       end
 
       def parse_check_result(check)
-        return if check.check_result.nil?
+        return nil if check.check_result.nil?
 
         check_result = JSON.parse(check.check_result)
         @lint_errors, @lint_status, @errors_count = check_result.values_at('parsed_result', 'exit_status', 'error_count')

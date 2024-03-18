@@ -5,8 +5,9 @@ module Stubs
     def initialize(*) end
 
     def repository_params(git_hub_repo_id)
-      puts git_hub_repo_id
       current_repo = user_repositories.filter { |repo| repo[:id] == 1296269 }.first
+      puts "current_repo"
+      puts current_repo
       {
         name: current_repo[:name],
         full_name: current_repo[:full_name],
