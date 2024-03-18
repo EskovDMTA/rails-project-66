@@ -26,7 +26,7 @@ module Web
       @repository = Repository.find_or_initialize_by(repository_params)
       if @repository.save
         puts "repository____save"
-        puts @repository
+        puts @repository.inspect
         redirect_to repositories_path
       else
         render :new
