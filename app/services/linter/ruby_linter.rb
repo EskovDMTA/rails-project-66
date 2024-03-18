@@ -8,6 +8,8 @@ module Linter
                   else
                     Rails.root.join(repo_path.to_s)
                   end
+      puts "******repo_path******"
+      puts repo_path
 
       command = "bundle exec rubocop --safe --format json #{repo_path}"
 
@@ -18,6 +20,8 @@ module Linter
     private
 
     def parsing_result(linter_result)
+      puts "****-LINTERRESULT-****"
+      puts linter_result
       json_result = JSON.parse(linter_result, symbolize_names: true)
       json_result[:files].reject { |file| file[:offenses].empty? }
     end
