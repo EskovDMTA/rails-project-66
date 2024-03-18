@@ -71,7 +71,7 @@
     "hooks_url": "https://api.github.com/repos/hexlet/hexlet-friends/hooks",
     "svn_url": "https://svn.github.com/hexlet/hexlet-friends",
     "homepage": "https://github.com",
-    "language": "JavaScript",
+    "language": "javascript",
     "forks_count": 9,
     "forks": 9,
     "stargazers_count": 80,
