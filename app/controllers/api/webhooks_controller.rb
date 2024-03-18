@@ -9,7 +9,7 @@ module Api
 
       run_lint(repository_params[:id])
 
-      render json: { message: t('.check_start') }, status: :ok
+      head :ok
     end
 
     private

@@ -8,15 +8,10 @@ module Linter
                   else
                     Rails.root.join(repo_path.to_s)
                   end
-      puts "**--REPO_PATH-***"
-      puts repo_path
 
       command = "bundle exec rubocop --safe --format json #{repo_path}"
 
       result = CommandRunner.run(command)
-      puts "**--RESULT-***"
-
-      puts result
       build_parsing_result(result[:stdout], result[:exit_status])
     end
 
