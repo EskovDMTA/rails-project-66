@@ -20,7 +20,7 @@ module Stubs
       puts user_repositories
       user_repositories.select { |repo| repo[:language] == 'javascript' || repo[:language] == 'ruby' }
                        .sort_by(& :full_name)
-                       .map { |repo| [repo.full_name, repo.id] }
+                       .map { |repo| [repo[:full_name], repo[:id]] }
     end
 
     def client
