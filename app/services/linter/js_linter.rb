@@ -4,7 +4,6 @@
 
 module Linter
   class JsLinter < BaseLinter
-
     def lint(repo_path)
       absolute_repo_path = Rails.root.join(repo_path || '')
       result = CommandRunner.run(

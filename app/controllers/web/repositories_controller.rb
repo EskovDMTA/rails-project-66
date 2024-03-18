@@ -25,8 +25,6 @@ module Web
       repository_params = @client.repository_params(repository_id).merge(user_id: current_user.id)
       @repository = Repository.find_or_initialize_by(repository_params)
       if @repository.save
-        puts "repository____save"
-        puts @repository.inspect
         redirect_to repositories_path
       else
         render :new

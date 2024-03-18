@@ -53,11 +53,13 @@ ru:
           check_column_string: Строка и символ
 
   check_mailer:
+
     check_failure_email:
       lint_report: Отчет о проверке кода
       greeting: Уважаемый(ая)
       lint_error_message: К сожалению, ваша последняя проверка кода завершилась с ошибками
       fix_errors_message: Пожалуйста, исправьте ошибки и попробуйте снова.
+      subject: Отчет о проверке кода
   authentication:
     login: Вы успешно вошли
     logout: Вы вышли из системы
@@ -82,3 +84,5 @@ ru:
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Всего %{entry_name} <b>%{first}–%{last}</b> из <b>%{total}</b>"
+  check_mailer:
+

@@ -12,7 +12,7 @@ class GitClient
   end
 
   def repository_params(git_hub_repo_id)
-    current_repo = user_repositories.filter { |repo| repo[:id] == git_hub_repo_id.to_i }.first
+    current_repo = user_repositories.find { |repo| repo[:id] == git_hub_repo_id.to_i }
     {
       name: current_repo[:name],
       full_name: current_repo[:full_name],

@@ -5,9 +5,7 @@ module Stubs
     def initialize(*) end
 
     def repository_params(_git_hub_repo_id)
-      current_repo = user_repositories.filter { |repo| repo[:id] == 1_296_269 }.first
-      puts 'current_repo'
-      puts current_repo
+      current_repo = user_repositories.find { |repo| repo[:id] == 1_296_269 }
       {
         name: current_repo[:name],
         full_name: current_repo[:full_name],
@@ -19,9 +17,6 @@ module Stubs
     end
 
     def fetch_user_repositories_name_and_id
-      # user_repositories.select { |repo| repo[:language] == 'javascript' || repo[:language] == 'ruby' }
-      #                  .sort_by { |repo| repo[:full_name] }
-      #                  .map { |repo| [repo[:full_name], repo[:id]] }
       ['octocat/Hello-World', 1_296_269]
     end
 

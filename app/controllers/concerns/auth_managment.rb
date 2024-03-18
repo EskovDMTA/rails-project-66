@@ -25,7 +25,7 @@ module AuthManagment
 
   def user_not_authorized
     flash[:alert] = t('bulletin_policy.login_or_registration', scope: 'pundit')
-    redirect_to(request.referrer || root_path)
+    redirect_to(request.referer || root_path)
   end
 
   private
