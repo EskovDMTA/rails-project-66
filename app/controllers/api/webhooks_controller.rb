@@ -5,7 +5,7 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def github
-      return render json: { message => 'not implemented' } unless request.headers == 'push'
+      return render json: { message: 'not implemented' } unless request.headers == 'push'
 
       run_lint(repository_params[:id])
       head :ok
