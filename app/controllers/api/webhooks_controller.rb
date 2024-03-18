@@ -5,15 +5,10 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def github
-      case request.headers['x-github-event']
-      when 'push'
-        run_lint(repository_params[:id])
-        head :ok
-      when 'ping'
-        head :ok
-      else
-        render json: 'not implementer request'
-      end
+      return render json: { message => 'not implemented' } unless request.headers == 'push'
+
+      run_lint(repository_params[:id])
+      head :ok
     end
 
     private

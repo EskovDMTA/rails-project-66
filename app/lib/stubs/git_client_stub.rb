@@ -27,7 +27,7 @@ module Stubs
     end
 
     def user_repositories
-      JSON.parse(client.repos, symbolize_names: true)
+      JSON.parse(File.read(file_fixture('hexlet-friends.json')), symbolize_names: true)
     end
   end
 end

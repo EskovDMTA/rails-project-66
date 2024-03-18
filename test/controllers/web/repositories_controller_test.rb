@@ -22,12 +22,6 @@ module Web
       assert_response :success
     end
 
-    # test '#new' do
-    #   repos_stub_request
-    #   get new_repository_path
-    #   assert_response :success
-    # end
-
     test '#create' do
       repos_stub_request
       post repositories_path
