@@ -40,7 +40,7 @@ table.table
         th
           = t('.check_column_string')
   - unless @repository.language.nil?
-    - if @repository.language.downcase == 'javascript'
+    - if @repository.language == 'javascript'
       = render partial: "web/repositories/checks/partial/js_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
     - else
       = render partial: "web/repositories/checks/partial/ruby_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}

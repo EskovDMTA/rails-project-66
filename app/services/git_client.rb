@@ -16,7 +16,7 @@ class GitClient
     {
       name: current_repo[:name],
       full_name: current_repo[:full_name],
-      language: current_repo[:language],
+      language: current_repo[:language].downcase,
       git_url: current_repo[:clone_url],
       ssh_url: current_repo[:ssh_url],
       github_id: git_hub_repo_id
