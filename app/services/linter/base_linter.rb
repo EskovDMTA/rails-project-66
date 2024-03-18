@@ -11,7 +11,7 @@ module Linter
     end
 
     def current_commit(repo_path)
-      result = CommandRunner.run('git log -n 1 --pretty=format:"%h"', chdir: Rails.root.join(repo_path))
+      result = CommandRunner.run('git log -n 1 --pretty=format:"%h"', chdir: Rails.root.join(repo_path || ''))
       result[:exit_status].zero? ? result[:stdout].strip : ''
     end
 
