@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   namespace :api do
-    post 'checks', to: 'webhooks#github'
+    post 'checks'
   end
 
   # Defines the root path route ("/")
