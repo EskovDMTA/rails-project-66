@@ -13,6 +13,8 @@ class RepositoryCheckJob
 
     check.run!
     check_result = linter_client.lint(repo_path)
+    puts "_____CHECK_RESULT_____"
+    puts check_result
     commit_id = linter_client.current_commit(repo_path)
 
     if check_result[:exit_status].zero?
@@ -23,6 +25,8 @@ class RepositoryCheckJob
     end
     check.finish!
     check.update!(repo_path:, check_result: check_result.to_json, commit_id:)
+    puts "_____CHECK_____"
+    puts check
   ensure
     Linter::RepositoryDownloader.clean_up(repo_path) if repo_path
   end
