@@ -8,9 +8,10 @@ module Stubs
       {
         name: 'javascript/repo',
         full_name: 'eskovdmta/javascript_repo',
-        language: 'javasript',
+        language: 'javascript',
         git_url: 'http://github.git/eskovdmta/ruby_repo',
-        github_id: git_hub_repo_id
+        github_id: git_hub_repo_id,
+        ssh_url: "github.git/eskovdmta/ruby_repo"
       }
     end
 
