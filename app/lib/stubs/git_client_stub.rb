@@ -4,15 +4,13 @@ module Stubs
   class GitClientStub
     def initialize(*) end
 
-    def repository_params(_git_hub_repo_id)
-      current_repo = user_repositories.find { |repo| repo[:id] == 1_296_269 }
+    def repository_params(git_hub_repo_id)
       {
-        name: current_repo[:name],
-        full_name: current_repo[:full_name],
-        language: current_repo[:language].downcase,
-        git_url: current_repo[:clone_url],
-        ssh_url: current_repo[:ssh_url],
-        github_id: 1_296_269
+        name: 'javascript/repo',
+        full_name: 'eskovdmta/javascript_repo',
+        language: 'javasript',
+        git_url: 'http://github.git/eskovdmta/ruby_repo',
+        github_id: git_hub_repo_id
       }
     end
 

@@ -1,7 +1,7 @@
 one:
-  name: ruby_repo
-  full_name: eskovdmta/ruby_repo
-  language: ruby
+  name: javascript_repo
+  full_name: eskovdmta/javascript_repo
+  language: javascript
   git_url: http://github.git/eskovdmta/ruby_repo
   ssh_url: http://github.git/eskovdmta/ruby_repo.ssh
   user: one
