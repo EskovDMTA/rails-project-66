@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-  class WebhooksController < Api::ApplicationController
+  class ChecksController < Api::ApplicationController
     skip_before_action :verify_authenticity_token
 
     def github
