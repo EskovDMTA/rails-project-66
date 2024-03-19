@@ -1,4 +1,9 @@
-= simple_form_for @repository, html: { 'data-turbo': 'false', class: "mt-2"} do |f|
-  = label :github_id, t('.label_github'), class: 'mb-2'
-  = select_tag :github_id, options_for_select(@user_repositories), required: true, disabled: @user_repositories.empty?, class: "form-select mb-2"
-  = f.button :submit, t('.button_create_repo'), class: 'btn-success mt-2', disabled: @user_repositories.empty?
+= simple_form_for @repository, html: { 'data-turbo': 'false', class: "mt-2" } do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+    = f.input :github_id, as: :select,
+            label: t('.label_github'),
+            required: true,
+            disabled: @user_repositories.empty?,
+            collection: @user_repositories
+    = f.button :submit, t('.button_create_repo'), class: 'btn-success mt-2', disabled: @user_repositories.empty?

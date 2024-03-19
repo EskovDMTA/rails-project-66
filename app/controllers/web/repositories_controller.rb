@@ -22,8 +22,9 @@ module Web
     end
 
     def create
-      repository_params = @client.repository_params(repository_id).merge(user_id: current_user.id)
-      @repository = Repository.find_or_initialize_by(repository_params)
+      repository_id = repository_params['github_id']
+      rep_param = @client.repository_params(repository_id).merge(user_id: current_user.id)
+      @repository = Repository.find_or_initialize_by(rep_param)
       if @repository.save
         redirect_to repositories_path
       else
@@ -33,8 +34,8 @@ module Web
 
     private
 
-    def repository_id
-      params[:github_id]
+    def repository_params
+      params.require(:repository).permit(:github_id)
     end
 
     def git_client
