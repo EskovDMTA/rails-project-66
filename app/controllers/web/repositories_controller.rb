@@ -24,11 +24,8 @@ module Web
     def create
       repository_id = repository_params['github_id']
       rep_param = @client.repository_params(repository_id).merge(user_id: current_user.id)
-      puts rep_param
       @repository = Repository.find_or_initialize_by(rep_param)
       if @repository.save
-        puts "_____REPOSITORY_CREATE_RESULT_____"
-        puts @repository.inspect
         redirect_to repositories_path
       else
         render :new
