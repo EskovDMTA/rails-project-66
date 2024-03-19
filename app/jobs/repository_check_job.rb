@@ -23,7 +23,6 @@ class RepositoryCheckJob
     end
     check.finish!
     check.update!(repo_path:, check_result: check_result.to_json, commit_id:)
-    puts check
   ensure
     Linter::RepositoryDownloader.clean_up(repo_path) if repo_path
   end
