@@ -25,6 +25,8 @@ module Web
       repository_id = repository_params['github_id']
       rep_param = @client.repository_params(repository_id).merge(user_id: current_user.id)
       @repository = Repository.find_or_initialize_by(rep_param)
+      puts @repository.inspect
+      puts @repository.valid?
       if @repository.save
         redirect_to repositories_path
       else
