@@ -34,7 +34,7 @@ module Web
     private
 
     def repository_id
-      params[:repo_id]
+      params[:github_id]
     end
 
     def git_client
