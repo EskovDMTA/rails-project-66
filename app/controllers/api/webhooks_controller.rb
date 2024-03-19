@@ -14,11 +14,13 @@ module Api
     private
 
     def repository_params
-      params.require('repository').permit('id')
+      params.require(:repository).permit(:id)
     end
 
     def run_lint(git_id)
+      puts git_id
       repository = Repository.find_by(github_id: git_id)
+      puts repository
       return unless repository
 
       check = repository.checks.create!
