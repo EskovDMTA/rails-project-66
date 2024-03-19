@@ -11,7 +11,7 @@ module Stubs
         language: 'javascript',
         git_url: 'http://github.git/eskovdmta/ruby_repo',
         github_id: git_hub_repo_id,
-        ssh_url: "github.git/eskovdmta/ruby_repo"
+        ssh_url: 'github.git/eskovdmta/ruby_repo'
       }
     end
 
