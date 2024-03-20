@@ -5,13 +5,9 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def github
-      puts "***---github callback--***"
-      puts request.headers.to_h.inspect
-      return render json: { message: 'not implemented' } unless request.headers == 'push'
-      puts "***---lint end callback--***"
       run_lint(repository_params[:id])
 
-      head :ok
+      render json: { status: 200 }
     end
 
     private
