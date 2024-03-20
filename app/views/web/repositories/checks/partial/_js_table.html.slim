@@ -3,7 +3,8 @@ tbody
     - lint_errors.each do |error_file|
       tr
         td[colspan="3"]
-          = link_to formatted_file_name(error_file.keys.first), repository_link(repository.full_name, check.commit_id, formatted_file_name(error_file.keys.first)), target: '_blank'
+          = link_to formatted_file_name(error_file.keys.first), repository_link(repository.full_name, check.commit_id,
+                  formatted_file_name(error_file.keys.first)), target: '_blank', rel: 'noopener'
       - error_file.values.first.each do |line|
         tr
           td.col-md-8

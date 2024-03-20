@@ -27,7 +27,7 @@ table.table
       td
         = t('.commit_id')
       td
-        = link_to @check.commit_id, commit_link(@repository.full_name, @check.commit_id), target: '_blank'
+        = link_to @check.commit_id, commit_link(@repository.full_name, @check.commit_id), target: '_blank', rel: 'noopener'
 .mb-5
 - if @errors_count != 0
   table.table.table-hover.mb-5
