@@ -6,7 +6,7 @@ module Api
 
     def github
       puts "***---github callback--***"
-      puts request.headers
+      puts request.headers.to_h.inspect
       return render json: { message: 'not implemented' } unless request.headers == 'push'
       puts "***---lint end callback--***"
       run_lint(repository_params[:id])
