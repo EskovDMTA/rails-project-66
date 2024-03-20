@@ -1,4 +1,4 @@
-= link_to t('.button_to_repo'), repository_path(params[:repository_id]), class: "btn btn-primary mb-4"
+= link_to t('.button_to_repo'), repository_path(params[:repository_id]), class: 'btn btn-primary mb-4'
 h1
   = "#{t('.check_number')} ##{@check.id}"
 table.table
@@ -7,7 +7,7 @@ table.table
       td
         = t('.check_created_at')
       td
-        = @check.created_at.strftime("%d %B %Y, %H:%M")
+        = @check.created_at.strftime('%d %B %Y, %H:%M')
     tr
       td
         = t('.check_status')
@@ -27,7 +27,7 @@ table.table
       td
         = t('.commit_id')
       td
-        = link_to @check.commit_id, commit_link(@repository.full_name, @check.commit_id), target: "_blank"
+        = link_to @check.commit_id, commit_link(@repository.full_name, @check.commit_id), target: '_blank'
 .mb-5
 - if @errors_count != 0
   table.table.table-hover.mb-5
@@ -41,6 +41,6 @@ table.table
           = t('.check_column_string')
       - if @repository
         - if @repository.language == 'javascript'
-          = render partial: "web/repositories/checks/partial/js_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
+          = render partial: 'web/repositories/checks/partial/js_table', locals: { check: @check, repository: @repository, lint_errors: @lint_errors }
         - else
-          = render partial: "web/repositories/checks/partial/ruby_table", locals: {check: @check, repository: @repository, lint_errors: @lint_errors}
+          = render partial: 'web/repositories/checks/partial/ruby_table', locals: { check: @check, repository: @repository, lint_errors: @lint_errors }

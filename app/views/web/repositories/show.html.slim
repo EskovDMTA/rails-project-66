@@ -1,7 +1,7 @@
 .mb-4
   h1
     = @repository.full_name
-= button_to t('.button_check_repo'), repository_checks_path(@repository.id), class: "btn btn-primary mb-4", data: {turbo: false}
+= button_to t('.button_check_repo'), repository_checks_path(@repository.id), class: 'btn btn-primary mb-4', data: { turbo: false }
 p
   strong.me-2
     = t('.repository_name')
@@ -42,7 +42,7 @@ hr
               span
                 = check.state_translation
             td
-              = link_to check.commit_id, commit_link(@repository.full_name, check.commit_id), target: "_blank"
+              = link_to check.commit_id, commit_link(@repository.full_name, check.commit_id), target: '_blank'
             td
               span
                 = check.passed

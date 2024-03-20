@@ -13,6 +13,7 @@ start:
 
 lint:
 	bundle exec rubocop
+	bundle exec slim-lint app/views/
 
 init-env:
 	cp env.example .env

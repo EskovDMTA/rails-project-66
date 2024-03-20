@@ -1,10 +1,10 @@
 tbody
-  - if lint_errors
+  - if lint_errors.present?
     - lint_errors.each do |element|
       tr
         td[colspan="3"]
           = link_to element['path'], repository_link(repository.full_name, check.commit_id,
-                  element['path']), target: "_blank"
+                  element['path']), target: '_blank'
       - element['offenses'].each do |line|
         tr
           td.col-md-8
@@ -12,5 +12,4 @@ tbody
           td
             = line['cop_name']
           td
-            = "#{line["location"]["line"]}:#{line["location"]["column"]}"
-
+            = "#{line['location']['line']}:#{line['location']['column']}'"
