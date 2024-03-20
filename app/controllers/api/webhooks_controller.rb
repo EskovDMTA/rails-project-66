@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-  class ChecksController < Api::ApplicationController
+  class WebhooksController < Api::ApplicationController
     skip_before_action :verify_authenticity_token
 
     def github
@@ -18,12 +18,14 @@ module Api
     end
 
     def run_lint(git_id)
-      puts git_id
       repository = Repository.find_by(github_id: git_id)
+      puts "***---REPOSITORY--***"
       puts repository
       return unless repository
 
       check = repository.checks.create!
+      puts "***---CHECK--***"
+      puts check
       RepositoryCheckJob.perform_inline(repository.id, check.id)
     end
   end
