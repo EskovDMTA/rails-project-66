@@ -16,7 +16,7 @@ module Stubs
     end
 
     def fetch_user_repositories_name_and_id
-      ['octocat/Hello-World', 1_296_269]
+      ['octocat/Hello-World', 1_111_111]
     end
 
     def client

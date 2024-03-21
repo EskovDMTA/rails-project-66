@@ -2,7 +2,7 @@
 
 module Web
   class RepositoriesController < Web::ApplicationController
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :git_client, only: %i[new create]
 
     def index

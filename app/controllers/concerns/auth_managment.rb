@@ -20,12 +20,12 @@ module AuthManagment
   def authenticate_user!
     return if current_user.present?
 
-    redirect_back fallback_location: root_path, alert: t('bulletin_policy.login_or_registration', scope: 'pundit')
+    redirect_to root_path, alert: t('bulletin_policy.login_or_registration', scope: 'pundit')
   end
 
   def user_not_authorized
     flash[:alert] = t('bulletin_policy.login_or_registration', scope: 'pundit')
-    redirect_to(request.referer || root_path)
+    redirect_to root_path
   end
 
   private

@@ -10,25 +10,30 @@ module Web
       sign_in @user
     end
 
-    test 'should get repositories index page' do
+    test '#index if user authenticate' do
       get repositories_path
-
       assert_response :success
     end
 
     test '#show' do
       get repository_path(@repo)
+      assert_response :success
+    end
 
+    test '#new' do
+      get new_repository_path
       assert_response :success
     end
 
     test '#create' do
+      repository_params = { github_id: 1_111_111 }
       repos_stub_request
-      post repositories_path
+      post repositories_path params: { repository: repository_params }
+
       repository = Repository.last
-      assert_equal repository.name, 'Hello-World'
-      assert_equal 'git@github.com:octocat/Hello-World.git', repository.ssh_url
-      assert_redirected_to repositories_path
+      assert_equal repository.name, 'javascript/repo'
+      assert_equal repository.github_id, 1_111_111.to_s
+      assert_equal 'github.git/eskovdmta/ruby_repo', repository.ssh_url
     end
 
     private
