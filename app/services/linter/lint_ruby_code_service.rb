@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module Linter
-  class RubyLinter < BaseLinter
-    def lint(repo_path)
+  class LintRubyCodeService < BaseLinterService
+    def perform(repo_path)
       repo_path = Rails.root.join(repo_path.to_s || '')
 
       command = "bundle exec rubocop --safe --format json #{repo_path}"
 
-      result = CommandRunner.run(command)
+      result = CommandRunnerService.run(command)
       build_parsing_result(result[:stdout], result[:exit_status])
     end
 

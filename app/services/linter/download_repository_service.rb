@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Linter
-  class RepositoryDownloader
+  class DownloadRepositoryService
     def self.download(repository_url)
       temp_repo_path = generate_temp_repository_path
-      result = CommandRunner.run("git clone #{repository_url} #{temp_repo_path}")
+      result = CommandRunnerService.run("git clone #{repository_url} #{temp_repo_path}")
       temp_repo_path if result[:exit_status].zero?
     end
 

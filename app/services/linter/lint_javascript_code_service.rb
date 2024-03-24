@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-# # frozen_string_literal: true
-
 module Linter
-  class JsLinter < BaseLinter
-    def lint(repo_path)
+  class LintJavaScriptCodeService < BaseLinterService
+    def perform(repo_path)
       absolute_repo_path = Rails.root.join(repo_path || '')
-      result = CommandRunner.run(
+      result = CommandRunnerService.run(
         "yarn run eslint --format json -c #{Rails.root.join('.eslintrc.js')} #{absolute_repo_path}"
       )
       build_parsing_result(result[:stdout], result[:exit_status])

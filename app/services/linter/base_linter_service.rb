@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Linter
-  class BaseLinter
+  class BaseLinterService
     def initialize(language = self.class)
       @language = language
     end
@@ -11,7 +11,7 @@ module Linter
     end
 
     def current_commit(repo_path)
-      result = CommandRunner.run('git log -n 1 --pretty=format:"%h"', chdir: Rails.root.join(repo_path || ''))
+      result = CommandRunnerService.run('git log -n 1 --pretty=format:"%h"', chdir: Rails.root.join(repo_path || ''))
       result[:exit_status].zero? ? result[:stdout].strip : ''
     end
 
@@ -21,6 +21,17 @@ module Linter
         error_count: count_errors(stdout),
         exit_status:
       }
+    end
+
+    def self.build_linter_client(language)
+      case language.downcase
+      when 'javascript'
+        Linter::LintJavaScriptCodeService.new
+      when 'ruby'
+        Linter::LintRubyCodeService.new
+      else
+        raise ArgumentError, "Unsupported language: #{language}"
+      end
     end
 
     private

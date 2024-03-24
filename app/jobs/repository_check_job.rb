@@ -8,11 +8,11 @@ class RepositoryCheckJob
   def perform(repository_id, check_id)
     repository = Repository.find(repository_id)
     check = Repository::Check.find(check_id)
-    linter_client = Linter::LinterFactory.create_linter(repository.language)
-    repo_path = Linter::RepositoryDownloader.download(repository.git_url)
+    linter_client = Linter::BaseLinterService.build_linter_client(repository.language)
+    repo_path = Linter::DownloadRepositoryService.download(repository.git_url)
 
     check.run!
-    check_result = linter_client.lint(repo_path)
+    check_result = linter_client.perform(repo_path)
     commit_id = linter_client.current_commit(repo_path)
 
     if check_result[:exit_status].zero?
@@ -24,6 +24,6 @@ class RepositoryCheckJob
     check.finish!
     check.update!(repo_path:, check_result: check_result.to_json, commit_id:)
   ensure
-    Linter::RepositoryDownloader.clean_up(repo_path) if repo_path
+    Linter::DownloadRepositoryService.clean_up(repo_path) if repo_path
   end
 end

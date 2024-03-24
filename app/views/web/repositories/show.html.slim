@@ -40,7 +40,8 @@ hr
               = link_to check.id, repository_check_path(@repository.id, check.id)
             td
               span
-                = check.state_translation
+                = check.aasm.human_state
+
             td
               = link_to check.commit_id, commit_link(@repository.full_name, check.commit_id), target: '_blank', rel: 'noopener'
             td

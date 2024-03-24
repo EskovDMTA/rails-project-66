@@ -1,5 +1,5 @@
 DEFAULTS: &DEFAULTS
-  aasm_state: checking
+  aasm_state: finished
   passed: false
 
 one:

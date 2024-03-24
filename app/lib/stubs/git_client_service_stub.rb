@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Stubs
-  class GitClientStub
+  class GitClientServiceStub
     def initialize(*) end
 
     def repository_params(git_hub_repo_id)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Linter
-  module CommandRunner
+  module CommandRunnerService
     def self.run(command, chdir: nil)
       if chdir.nil?
         stdout, stderr, status = Open3.capture3(command)

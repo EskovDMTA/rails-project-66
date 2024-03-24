@@ -12,7 +12,7 @@ table.table
       td
         = t('.check_status')
       td
-        = @check.state_translation
+        = @check.aasm.human_state
     tr
       td
         = t('.check_status_end')

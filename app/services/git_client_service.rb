@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class GitClient
+class GitClientService
   def initialize(access_token)
     @access_token = access_token
   end
 
   def fetch_user_repositories_name_and_id
-    user_repositories.select { |repo| repo.language == 'JavaScript' || repo.language == 'Ruby' }
+    user_repositories.select { |repo| %w[JavaScript Ruby].include?(repo.language) }
                      .sort_by(& :full_name)
                      .map { |repo| [repo.full_name, repo.id] }
   end

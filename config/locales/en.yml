@@ -2,11 +2,10 @@ en:
   activerecord:
     attributes:
       repository/check:
-        aasm_states:
-          running: In progress
-          created: Started
-          failed: Completed with errors
-          finished: Completed
+        aasm_state/running: In progress
+        aasm_state/created: Started
+        aasm_state/failed: Completed with errors
+        aasm_state/finished: Completed
   layouts:
     application:
       title: Repository Quality Analyzer
@@ -14,8 +13,7 @@ en:
     home:
       index:
         project_name: Repository Quality Analyzer
-        project_description: A project that helps automatically monitor the quality of repositories on Github. It tracks changes and runs them through built-in analyzers. Then it generates reports and sends them to the user.
-
+        project_description: A project that helps automatically monitor the quality of repositories on GitHub. It tracks changes and runs them through built-in analyzers. Then it generates reports and sends them to the user.
     repositories:
       index:
         add_button: Add
@@ -39,7 +37,7 @@ en:
         table_check_created_at: Created at
       create:
         success_create: Repository created successfully.
-        create_failure: The repository was not added.
+        create_failure: Repository was not added.
       checks:
         create:
           check_start: Check started
@@ -54,6 +52,12 @@ en:
           check_message: Message
           check_id_rules: Rule ID
           check_column_string: String and character
+    shared:
+      header:
+        main_page: Main page1
+        to_repositories: To repositories1
+        logout: Logout1
+        login: Login1
 
   check_mailer:
     check_failure_email:
@@ -85,4 +89,3 @@ en:
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first}–%{last}</b> of <b>%{total}</b> in total"
-

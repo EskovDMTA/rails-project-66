@@ -22,8 +22,5 @@ class Repository
         transitions from: :running, to: :failed
       end
     end
-    def state_translation
-      I18n.t("activerecord.attributes.repository/check.aasm_states.#{aasm_state}")
-    end
   end
 end

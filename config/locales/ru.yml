@@ -2,11 +2,10 @@ ru:
   activerecord:
     attributes:
       repository/check:
-        aasm_states:
-          running: В процессе
-          created: Начато
-          failed: Завершено с ошибками
-          finished: Завершено
+        aasm_state/running: В процессе
+        aasm_state/created: Начато
+        aasm_state/failed: Завершено с ошибками
+        aasm_state/finished: Завершено
   layouts:
     application:
       title: Анализатор качества репозитория
@@ -15,7 +14,6 @@ ru:
       index:
         project_name: Анализатор качества репозитория
         project_description: Проект, который помогает автоматически отслеживать качество репозиториев на GitHub. Он отслеживает изменения, запускает их через встроенные анализаторы. Затем генерирует отчеты и отправляет их пользователю.
-
     repositories:
       index:
         add_button: Добавить
@@ -23,7 +21,6 @@ ru:
         table_repository_language: Язык
         table_repository_check_status: Последний статус проверки
         no_checks_available: '-'
-
       new:
         button_create_repo: Создать репозиторий
         label_github: GitHub *
@@ -54,7 +51,12 @@ ru:
           check_message: Сообщение
           check_id_rules: Идентификатор правила
           check_column_string: Строка и символ
-
+    shared:
+      header:
+        main_page: Главная страница
+        to_repositories: К репозиториям
+        logout: Выйти
+        login: Войти
   check_mailer:
     check_failure_email:
       lint_report: Отчет о проверке кода
@@ -64,11 +66,9 @@ ru:
   authentication:
     login: Вы успешно вошли в систему
     logout: Вы вышли из системы
-
   pundit:
     bulletin_policy:
       login_or_registration: Пожалуйста, войдите, чтобы загрузить репозитории.
-
   views:
     pagination:
       first: "&laquo; Первая"
