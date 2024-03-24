@@ -26,7 +26,7 @@ module Linter
     def self.build_linter_client(language)
       case language.downcase
       when 'javascript'
-        Linter::LintJavaScriptCodeService.new
+        Linter::LintJavascriptCodeService.new
       when 'ruby'
         Linter::LintRubyCodeService.new
       else

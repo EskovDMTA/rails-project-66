@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Linter
-  class LintJavaScriptCodeService < BaseLinterService
+  class LintJavascriptCodeService < BaseLinterService
     def perform(repo_path)
       absolute_repo_path = Rails.root.join(repo_path || '')
       result = CommandRunnerService.run(
