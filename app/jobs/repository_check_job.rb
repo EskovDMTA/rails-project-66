@@ -13,6 +13,7 @@ class RepositoryCheckJob
 
     check.run!
     check_result = linter_client.perform(repo_path)
+    puts check_result
     commit_id = linter_client.current_commit(repo_path)
 
     if check_result[:exit_status].zero?
