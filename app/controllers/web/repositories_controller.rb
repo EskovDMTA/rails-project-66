@@ -26,9 +26,9 @@ module Web
       rep_param = @client.repository_params(repository_id).merge(user_id: current_user.id)
       @repository = Repository.find_or_initialize_by(rep_param)
       if @repository.save
-        redirect_to repositories_path
+        redirect_to repositories_path, notice: t('.success_create')
       else
-        render :new
+        render :new, alert: t('.create_failure')
       end
     end
 

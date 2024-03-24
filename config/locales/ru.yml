@@ -4,73 +4,70 @@ ru:
       repository/check:
         aasm_states:
           running: В процессе
-          created: Запущена
-          failed: Завершена с ошибкой
-          finished: Завершена
+          created: Начато
+          failed: Завершено с ошибками
+          finished: Завершено
   layouts:
     application:
-      title: Анализатор Качества Репозиториев
+      title: Анализатор качества репозитория
   web:
     home:
       index:
-        project_name: Анализатор качества репозиториев
-        project_description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
+        project_name: Анализатор качества репозитория
+        project_description: Проект, который помогает автоматически отслеживать качество репозиториев на GitHub. Он отслеживает изменения, запускает их через встроенные анализаторы. Затем генерирует отчеты и отправляет их пользователю.
 
     repositories:
       index:
         add_button: Добавить
         table_repository_name: Название
         table_repository_language: Язык
-        table_repository_check_status: Статус последней проверки
+        table_repository_check_status: Последний статус проверки
         no_checks_available: '-'
 
       new:
         button_create_repo: Создать репозиторий
-        label_github: GitHub
+        label_github: GitHub *
       show:
         button_check_repo: Проверить
         repository_name: Название
         repository_language: Язык
-        repository_created_at: Дата создания
-        repository_updated: Дата обновления
+        repository_created_at: Создан
+        repository_updated: Обновлен
         table_check_status: Статус
-        table_check_commit: ID коммита
-        table_check_state: Проверка пройдена?
-        table_check_created_at: Дата создания
+        table_check_commit: Идентификатор коммита
+        table_check_state: Пройдена проверка?
+        table_check_created_at: Создана
+      create:
+        success_create: Репозиторий успешно создан.
+        create_failure: Репозиторий не был добавлен.
       checks:
         create:
-          check_start: Проверка началась
+          check_start: Проверка начата
         show:
           button_to_repo: Перейти к репозиторию
           check_number: Проверка
-          check_created_at: Дата создания
+          check_created_at: Создана
           check_status: Статус
           check_status_end: Проверка пройдена
-          check_errors_count: Количество замечаний
-          commit_id: ID коммита
+          check_errors_count: Количество ошибок
+          commit_id: Идентификатор коммита
           check_message: Сообщение
           check_id_rules: Идентификатор правила
           check_column_string: Строка и символ
-    shared:
-      header:
-        main_page: Главная
-        to_repositories: Репозитории
 
   check_mailer:
-
     check_failure_email:
       lint_report: Отчет о проверке кода
-      greeting: Уважаемый(ая)
-      lint_error_message: К сожалению, ваша последняя проверка кода завершилась с ошибками
+      greeting: Уважаемый
+      lint_error_message: К сожалению, ваша последняя проверка кода завершилась с ошибками.
       fix_errors_message: Пожалуйста, исправьте ошибки и попробуйте снова.
-      subject: Отчет о проверке кода
   authentication:
-    login: Вы успешно вошли
+    login: Вы успешно вошли в систему
     logout: Вы вышли из системы
 
   pundit:
     bulletin_policy:
-      login_or_registration: Войдите в систему для загрузки репозиториев.
+      login_or_registration: Пожалуйста, войдите, чтобы загрузить репозитории.
 
   views:
     pagination:
@@ -83,9 +80,8 @@ ru:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "No %{entry_name} found"
-          one: "Displaying <b>1</b> %{entry_name}"
-          other: "Displaying <b>all %{count}</b> %{entry_name}"
+          zero: "Нет %{entry_name} найдено"
+          one: "Отображается <b>1</b> %{entry_name}"
+          other: "Отображаются <b>все %{count}</b> %{entry_name}"
       more_pages:
-        display_entries: "Всего %{entry_name} <b>%{first}–%{last}</b> из <b>%{total}</b>"
-
+        display_entries: "Отображаются %{entry_name} <b>%{first}–%{last}</b> из <b>%{total}</b> всего"

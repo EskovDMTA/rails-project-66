@@ -37,6 +37,9 @@ en:
         table_check_commit: Commit ID
         table_check_state: Passed check?
         table_check_created_at: Created at
+      create:
+        success_create: Repository created successfully.
+        create_failure: The repository was not added.
       checks:
         create:
           check_start: Check started
@@ -82,3 +85,4 @@ en:
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first}–%{last}</b> of <b>%{total}</b> in total"
+
