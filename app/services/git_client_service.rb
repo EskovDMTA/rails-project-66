@@ -6,7 +6,8 @@ class GitClientService
   end
 
   def fetch_user_repositories_name_and_id
-    user_repositories.select { |repo| %w[JavaScript Ruby].include?(repo.language) }
+    relevant_languages = %w[JavaScript Ruby]
+    user_repositories.select { |repo| relevant_languages.include?(repo.language) }
                      .sort_by(& :full_name)
                      .map { |repo| [repo.full_name, repo.id] }
   end
