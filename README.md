@@ -5,7 +5,7 @@
 
 ## Repository Code Quality Checking Application
 
-Deploy: https://rails-project-66-2ug7.onrender.com
+Deploy: [https://rails-project-66-2ug7.onrender.com](https://rails-project-66-2ug7.onrender.com/)
 
 This application allows you to assess the code quality of your repository.
 
